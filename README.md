@@ -1,0 +1,104 @@
+# Are Countries Replacing Fossil Fuels — or Just Adding Renewables on Top?
+
+An end-to-end analysis of the global energy transition across **50 countries (2000–2025)** — together covering roughly 92% of world electricity production. It was built to answer one question: when countries grow their renewables, are they actually *replacing* fossil fuels, or just stacking clean energy on top of a fossil base that never shrinks? And does government policy actually accelerate the shift?
+
+## Key Findings
+
+**1. Most countries added renewables on top of fossil fuels — they didn't replace them.**
+Across all 50 countries, fossil electricity generation *grew* from **8,987 TWh in 2000 to 17,159 TWh in 2024** — a 1.9× increase. Renewables expanded alongside it, but the fossil layer never shrank. At a global level, the transition has so far been **additive, not substitutive**.
+
+**2. 11 countries went backwards.** Despite the global narrative of clean-energy progress, 11 of 50 countries had a *lower* renewable share in 2024 than in 2000 — including the Philippines, Peru, and Colombia, which each fell by 14–22 percentage points as fossil generation outpaced their (largely hydro) renewables.
+
+**3. Global solar grew roughly 2,000×.** Worldwide solar electricity went from **1 TWh in 2000 to 2,035 TWh in 2024** — yet even that explosive growth wasn't enough to push fossil fuels into decline.
+
+**4. China dominates the build-out.** China alone produced **41% of the world's solar and 42% of the world's wind** in 2024 — more than the next six countries combined in each category. It also accounts for the largest estimated CO₂ savings: **~826 Mt**, more than the USA, India, Germany, and Brazil combined.
+
+**5. Wealth predicts clean energy — but geography predicts it more.** High-income countries average 39.7% renewables vs 18.7% for lower-middle income, with **half the carbon intensity** (322 vs 641 gCO₂/kWh). Yet the single greenest region isn't wealthy Europe — it's **South America (67.4%)**, powered by legacy hydropower in Brazil, Venezuela, and Colombia. Europe is second at 53.5%; the Middle East is lowest at 5.7%.
+
+**6. Policy helps — but it's not a guarantee.** Of 47 countries with a clear policy milestone, **30 (64%) accelerated** their renewable growth afterward — but **17 did not**. Argentina nearly quintupled its growth rate after policy (1.6% → 8.0%); Belgium and Canada actually slowed.
+
+## The Central Answer
+
+**Mostly adding, not replacing — and policy only sometimes changes that.** A handful of countries (Germany, the UK, Netherlands, Spain) genuinely transformed, taking renewables from near-zero to over 50% of their mix — Germany alone improved by 52 percentage points (6% → 59%). But globally, fossil generation still nearly doubled while renewables were layered on top, and a third of countries with renewable policies saw no acceleration at all.
+
+## Tools & Pipeline
+
+```
+Excel  →  BigQuery  →  SQL  →  Power BI  →  GitHub
+```
+
+- **Excel** — data cleaning, a documented data-quality log, and a country scorecard with weighted transition scoring
+- **BigQuery** — cloud data warehouse; a 4-table star schema (2 dimension, 2 fact)
+- **SQL** — 6 analysis files using JOINs, window functions (`RANK`, `FIRST_VALUE`, `SUM OVER`), `QUALIFY`, and chained CTEs
+- **Power BI** — a 4-page interactive dashboard connected live to BigQuery, with DAX measures
+- **GitHub** — this repository
+
+## Dashboard
+
+The Power BI dashboard has four pages, each answering one part of the central question:
+
+| Page | Question | Key visual |
+|------|----------|-----------|
+| 1. Global Overview | Where does the world stand? | World map + KPIs |
+| 2. Leaders vs Laggards | Who advanced, who fell behind? | Ranked bar chart (the 11 in red) |
+| 3. Energy Mix Over Time | Replacing or adding on top? | Stacked area chart |
+| 4. Policy Impact | Did policy work? | Trend + before/after table |
+
+![Global overview](04_powerbi/screenshots/page1.png)
+![Leaders vs laggards](04_powerbi/screenshots/page2.png)
+![Energy mix over time](04_powerbi/screenshots/page3.png)
+![Policy impact](04_powerbi/screenshots/page4.png)
+
+## Repository Structure
+
+```
+energy-transition-analysis/
+├── README.md
+├── 01_data/
+│   ├── dim_country.csv            (50 countries)
+│   ├── dim_policy_events.csv      (59 policy milestones)
+│   ├── fact_energy.csv            (1,294 country-year rows)
+│   ├── fact_yoy_growth.csv        (1,294 rows)
+│   └── data_dictionary.md
+├── 02_excel/
+│   └── energy_transition_cleaning.xlsx
+├── 03_sql/
+│   ├── 01_schema.sql
+│   ├── 02_data_quality_checks.sql
+│   ├── 03_regional_performance.sql
+│   ├── 04_country_transition_trends.sql
+│   ├── 05_policy_impact_analysis.sql
+│   └── 06_dashboard_views.sql
+└── 04_powerbi/
+    ├── dashboard.pbix
+    └── screenshots/
+```
+
+## Method Notes
+
+- **2024 is treated as the latest complete year.** 2025 exists in the data but only covers 44 of 50 countries and is missing GDP, so it's excluded from "current state" figures.
+- **Star schema.** Two dimension tables (country, policy events) and two fact tables (energy measures, year-over-year growth), joined on country.
+- **Window functions over self-joins.** Country change-over-time uses `FIRST_VALUE` + `QUALIFY` (BigQuery-specific) rather than self-joins, and global-share calculations use `SUM() OVER ()`.
+
+## Data Limitations
+
+This analysis is explicit about what the data can and can't support:
+
+- **CO₂ savings are estimates, not measured values.** The `co2_saved_solar_wind_mt` field uses a gas-displacement estimate (450 gCO₂/kWh baseline) and is indicative only, not an official figure. China's "826 Mt saved" should be read as an estimate of avoided emissions, not a precise measurement.
+- **Policy analysis shows association, not proven causation.** The 59 policy milestones are real and sourced (IEA, IRENA, national governments), but a before/after growth comparison cannot rule out other factors (technology cost declines, global market shifts) that moved at the same time.
+- **GDP is missing for 2024–2025**, so income-group comparisons rely on the World Bank classification rather than live GDP.
+- **Year-over-year growth has structural nulls** in the pre-solar/pre-wind era (a country with near-zero solar in 2001 has no meaningful growth rate), and early-stage growth percentages can be extreme (solar going from 0.01 to 2.4 TWh reads as +24,000%) — these are real, not errors.
+- **"Renewable share" includes hydro**, which is why hydro-rich South America leads the regional ranking — a legacy-hydro country can rank high without recent solar or wind investment.
+
+## Data Sources
+
+Compiled from three established energy datasets, via the [World Energy Transition 2000–2025](https://www.kaggle.com/datasets/alitaqishah/world-energy-transition-20002025) dataset on Kaggle:
+
+- **Our World in Data** — Energy Data (CC-BY 4.0) · https://github.com/owid/energy-data
+- **Ember** — Yearly Electricity Data · https://ember-energy.org/data/yearly-electricity-data/
+- **IEA** — Renewables Progress Tracker · https://www.iea.org
+- **Policy milestones** — compiled from IEA, IRENA, and national government sources
+
+---
+
+*Built by [Your Name] as an end-to-end analytics portfolio project — Excel cleaning, BigQuery SQL, and Power BI dashboarding. [LinkedIn / portfolio link]*

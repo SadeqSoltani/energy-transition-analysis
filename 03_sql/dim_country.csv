@@ -1,0 +1,51 @@
+country_id,country,region,income_group
+1,Algeria,Africa,Lower-middle
+2,Argentina,South America,Upper-middle
+3,Australia,Oceania,High
+4,Austria,Europe,High
+5,Bangladesh,Asia,Lower-middle
+6,Belgium,Europe,High
+7,Brazil,South America,Upper-middle
+8,Canada,North America,High
+9,Chile,South America,High
+10,China,Asia,Upper-middle
+11,Colombia,South America,Upper-middle
+12,Czechia,Europe,High
+13,Egypt,Africa,Lower-middle
+14,Finland,Europe,High
+15,France,Europe,High
+16,Germany,Europe,High
+17,India,Asia,Lower-middle
+18,Indonesia,Asia,Upper-middle
+19,Iran,Middle East,Upper-middle
+20,Iraq,Middle East,Upper-middle
+21,Israel,Middle East,High
+22,Italy,Europe,High
+23,Japan,Asia,High
+24,Kazakhstan,Asia,Upper-middle
+25,Kuwait,Middle East,High
+26,Malaysia,Asia,Upper-middle
+27,Mexico,North America,Upper-middle
+28,Netherlands,Europe,High
+29,Norway,Europe,High
+30,Pakistan,Asia,Lower-middle
+31,Peru,South America,Upper-middle
+32,Philippines,Asia,Lower-middle
+33,Poland,Europe,High
+34,Romania,Europe,High
+35,Russia,Europe/Asia,Upper-middle
+36,Saudi Arabia,Middle East,High
+37,Singapore,Asia,High
+38,South Korea,Asia,High
+39,Spain,Europe,High
+40,Sweden,Europe,High
+41,Switzerland,Europe,High
+42,Taiwan,Asia,High
+43,Thailand,Asia,Upper-middle
+44,Turkey,Europe/Asia,Upper-middle
+45,United Arab Emirates,Middle East,High
+46,United Kingdom,Europe,High
+47,United States,North America,High
+48,Uzbekistan,Asia,Lower-middle
+49,Venezuela,South America,Upper-middle
+50,Vietnam,Asia,Lower-middle
