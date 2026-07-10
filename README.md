@@ -96,13 +96,13 @@ The Power BI dashboard has four pages, each answering one part of the central qu
 ```
 energy-transition-analysis/
 ├── README.md
-├── 01_data/
+├── 01_raw_data/
 │   ├── dim_country.csv            (50 countries)
 │   ├── dim_policy_events.csv      (59 policy milestones)
 │   ├── fact_energy.csv            (1,294 country-year rows)
 │   ├── fact_yoy_growth.csv        (1,294 rows)
 │   └── data_dictionary.md
-├── 02_excel/
+├── 02_cleaning/
 │   └── energy_transition_cleaning.xlsx
 ├── 03_sql/
 │   ├── 01_schema.sql
