@@ -1,0 +1,31 @@
+# Power BI temp / cache files
+*.pbix.tmp
+*~$*.pbix
+
+# Excel temp / lock files
+~$*.xlsx
+~$*.xls
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python (if any EDA scripts are added later)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Credentials / secrets — never commit BigQuery keys
+*.json
+!data_dictionary.json
+service-account*.json
+*credentials*
+.env
+
+# Editor
+.vscode/
+.idea/
