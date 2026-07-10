@@ -21,6 +21,46 @@ Across all 50 countries, fossil electricity generation *grew* from **8,987 TWh i
 
 **Mostly adding, not replacing and policy only sometimes changes that.** A handful of countries (Germany, the UK, Netherlands, Spain) genuinely transformed, taking renewables from near-zero to over 50% of their mix Germany alone improved by 52 percentage points (6% → 59%). But globally, fossil generation still nearly doubled while renewables were layered on top, and a third of countries with renewable policies saw no acceleration at all.
 
+## Recommendations for Investors and Developers
+
+The central finding (additive, not substitutive) points to a clear investment thesis:
+capital tends to flow toward markets that are already green and easy, while the
+strongest opportunities sit in the gaps, meaning high-potential markets with low
+deployment. Each recommendation below traces back to a specific finding.
+
+**1. Target the Middle East gap.**
+The Middle East averages just 5.7% renewables, the lowest of any region, despite
+abundant solar resource and deep pools of capital. This is a policy-timing play: the
+low share is driven by cheap domestic fossil fuels and subsidies, so the opportunity
+opens as subsidy reform and diversification mandates take effect. Build pipeline now
+and deploy when the regulatory environment shifts.
+
+**2. Fund the backsliders.**
+Eleven countries, including Peru, Colombia, and the Philippines, saw their renewable
+share fall as growing demand defaulted to fossil generation. That rising demand is
+exactly what a new solar or wind project sells into. Their existing renewables are
+largely hydro, which is exposed to drought, so solar and wind can be positioned as
+grid resilience and diversification rather than clean energy alone.
+
+**3. Screen on deployment data, not policy headlines.**
+Only 64% of countries with a policy milestone accelerated afterward, so a national
+pledge is a weak signal on its own. Use actual year-over-year renewable growth to
+qualify markets, and treat stated targets as ambition rather than evidence.
+
+**4. Hedge the supply-chain concentration.**
+China produced roughly 41% of the world's solar and 42% of its wind in 2024. Project
+economics that depend on this supply chain carry tariff and geopolitical risk, so
+price that risk in and diversify sourcing where possible to protect returns.
+
+**Caveats.**
+These recommendations are a market-screening layer, not a final investment decision.
+The policy analysis shows association, not causation, so deployment-based screening is
+the more reliable takeaway. Renewable share includes hydro, which is why the
+backsliding markets look the way they do. This dataset also covers electricity only,
+and does not capture transport, heating, storage, or grid constraints that materially
+affect any real project.
+
+
 ## Tools & Pipeline
 
 ```
